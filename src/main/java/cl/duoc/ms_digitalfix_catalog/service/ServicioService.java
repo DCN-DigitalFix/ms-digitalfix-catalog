@@ -31,7 +31,7 @@ public class ServicioService {
 
     @Transactional(readOnly = true)
     public ServicioResponse obtener(Long id) {
-        return toResponse(buscar(id));
+        return toResponse(buscarServicio(id));
     }
 
     @Transactional
@@ -48,7 +48,7 @@ public class ServicioService {
     /** Baja logica: el servicio deja de ofrecerse pero las ordenes que lo usaron siguen teniendo sentido. */
     @Transactional
     public ServicioResponse desactivar(Long id) {
-        Servicio servicio = buscar(id);
+        Servicio servicio = buscarServicio(id);
         servicio.setActivo(false);
 
         return toResponse(repository.save(servicio));
@@ -56,7 +56,7 @@ public class ServicioService {
 
     // -----------------------------------------------------------------------
 
-    private Servicio buscar(Long id) {
+    private Servicio buscarServicio(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Servicio no encontrado: " + id));
     }
