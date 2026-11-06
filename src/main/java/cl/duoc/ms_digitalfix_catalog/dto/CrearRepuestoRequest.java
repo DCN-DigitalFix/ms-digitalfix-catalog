@@ -1,6 +1,6 @@
 package cl.duoc.ms_digitalfix_catalog.dto;
 
-import java.math.BigDecimal;
+
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,7 +19,7 @@ public record CrearRepuestoRequest(
         @NotNull(message = "el stock es obligatorio") @PositiveOrZero(message = "el stock no puede ser negativo") 
         Integer stock,
 
-        @NotNull @PositiveOrZero BigDecimal precioUnitario
+        @NotNull @PositiveOrZero Double precioUnitario
 
 ) {
 

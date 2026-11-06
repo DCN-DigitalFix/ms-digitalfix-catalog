@@ -2,6 +2,7 @@ package cl.duoc.ms_digitalfix_catalog.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,11 +14,8 @@ import cl.duoc.ms_digitalfix_catalog.repository.ServicioRepository;
 @Service
 public class ServicioService {
 
-    private final ServicioRepository repository;
-
-    public ServicioService(ServicioRepository repository) {
-        this.repository = repository;
-    }
+    @Autowired 
+    private ServicioRepository repository;
 
     @Transactional(readOnly = true)
     public List<ServicioResponse> listar() {
