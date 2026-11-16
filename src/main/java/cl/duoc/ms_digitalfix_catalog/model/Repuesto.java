@@ -26,6 +26,8 @@ public class Repuesto {
 
     private double precioUnitario;
 
+
+    
     public Repuesto() {
     }
 

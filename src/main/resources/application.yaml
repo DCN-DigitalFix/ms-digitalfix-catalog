@@ -1,0 +1,23 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: ms-digitalfix-catalog
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://login.microsoftonline.com/6e49fdba-8435-41ac-8074-7b1a04cfd543/v2.0
+
+digitalfix:
+  security:
+    audiences:
+      - 13a645a9-ea0e-498e-96b8-55a3d56f10eb
+      - api://13a645a9-ea0e-498e-96b8-55a3d56f10eb
+  cors:
+    allowed-origins:
+      - http://localhost:4200
