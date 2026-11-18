@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +38,7 @@ public class RepuestoController {
 
 
     @PostMapping
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<RepuestoResponse> crearRepuestoResponse(@Valid @RequestBody CrearRepuestoRequest request) {
         RepuestoResponse creado = repuestoService.crearRepuestoResponse(request);
         return ResponseEntity
@@ -45,6 +47,7 @@ public class RepuestoController {
     }
 
     @PostMapping("/{codigo}/descontar")
+    @PreAuthorize("hasAnyRole('Admin','Supervisor')")
     public RepuestoResponse descontar(@PathVariable String codigo, @Valid @RequestBody DescontarStockRequest request) {
         return repuestoService.descontarStock(codigo, request.cantidad());
     }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ public class ServicioController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('Admin')")
     public ResponseEntity<ServicioResponse> crear(@Valid @RequestBody CrearServicioRequest request) {
         ServicioResponse creado = servicioService.crear(request);
         return ResponseEntity
@@ -47,6 +49,7 @@ public class ServicioController {
     }
 
     @DeleteMapping("/eliminar/{id}")
+    @PreAuthorize("hasRole('Admin')")
     public ServicioResponse desactivar(@PathVariable Long id) {
         return servicioService.desactivar(id);
     }
