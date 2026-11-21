@@ -48,7 +48,7 @@ public class ServicioController {
                 .body(creado);
     }
 
-    @DeleteMapping("/eliminar/{id}")
+    @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('Admin')")
     public ServicioResponse desactivar(@PathVariable Long id) {
         return servicioService.desactivar(id);

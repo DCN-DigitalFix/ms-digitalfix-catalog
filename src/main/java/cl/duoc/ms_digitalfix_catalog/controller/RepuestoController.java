@@ -20,7 +20,7 @@ import cl.duoc.ms_digitalfix_catalog.service.RepuestoService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/api/v1/catalog/respuestos") 
+@RequestMapping("/api/v1/catalog/repuestos") 
 public class RepuestoController {
 
     @Autowired 
