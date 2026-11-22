@@ -11,13 +11,20 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: https://login.microsoftonline.com/6e49fdba-8435-41ac-8074-7b1a04cfd543/v2.0
+          # Tenant gozalo23, el mismo que bff/workorders/audit/notify/report.
+          issuer-uri: https://login.microsoftonline.com/a6a0c27e-18a7-4209-bd1b-32338be5cb66/v2.0
 
 digitalfix:
   security:
+    # Audiencia compartida "DigitalFix API": catalog dejo de tener su propio
+    # tenant ("jesus") para que un mismo access token del frontend sirva para
+    # todos los microservicios. Si se necesita volver al tenant anterior,
+    # issuer-uri era https://login.microsoftonline.com/6e49fdba-8435-41ac-8074-7b1a04cfd543/v2.0
+    # y las audiencias 13a645a9-ea0e-498e-96b8-55a3d56f10eb / api://13a645a9-...
     audiences:
-      - 13a645a9-ea0e-498e-96b8-55a3d56f10eb
-      - api://13a645a9-ea0e-498e-96b8-55a3d56f10eb
+      - 8e5e408b-c101-4bc1-a5d3-01f702720462
+      - api://8e5e408b-c101-4bc1-a5d3-01f702720462
   cors:
     allowed-origins:
       - http://localhost:4200
+      - https://44.206.195.117
