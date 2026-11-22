@@ -47,7 +47,7 @@ public ResponseEntity<ApiError> handleValidacion(
 
     // -----------------------------------------------------------------------
 
-    /** WebRequest entrega la ruta como "uri=/api/catalog/..."; aqui se limpia. */
+    /** WebRequest entrega la ruta como "uri=/api/v1/catalog/..."; aqui se limpia. */
     private String path(WebRequest request) {
         return request.getDescription(false).replace("uri=", "");
     }
