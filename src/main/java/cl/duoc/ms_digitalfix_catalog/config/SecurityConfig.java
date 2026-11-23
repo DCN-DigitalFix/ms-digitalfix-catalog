@@ -24,16 +24,11 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @EnableConfigurationProperties(SecurityProperties.class)
 public class SecurityConfig {
 
-    private final SecurityProperties properties;
-    private final String issuerUri;
-
     @Autowired
-    public SecurityConfig(
-            SecurityProperties properties,
-            @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}") String issuerUri) {
-        this.properties = properties;
-        this.issuerUri = issuerUri;
-    }
+    private SecurityProperties properties;
+
+    @Value("${spring.security.oauth2.resourceserver.jwt.issuer-uri}")
+    private String issuerUri;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
